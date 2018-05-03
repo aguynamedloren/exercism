@@ -6,7 +6,7 @@ class Prime
     current_count = 2
 
     while primes.count < n
-      if is_prime?(current_count)
+      if is_prime?(current_count, primes)
         primes.push(current_count)
       end
 
@@ -16,10 +16,8 @@ class Prime
     return primes.last
   end
 
-  def self.is_prime?(number)
-    preceding_numbers = (2...number)
-
-    preceding_numbers.all? do |preceding|
+  def self.is_prime?(number, primes)
+    primes.all? do |preceding|
       number % preceding != 0
     end
   end
